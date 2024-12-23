@@ -1,3 +1,4 @@
+import sys
 import json
 
 def UpdateValues(data):
@@ -8,10 +9,17 @@ def UpdateValues(data):
         for nestedData in data["values"]:
             UpdateValues(nestedData)
 
-with open("values.json", 'r') as json_values:
+
+files = sys.argv
+
+valuesJson = files[1]
+testsJson = files[2]
+reportsJson = files[3]
+
+with open(valuesJson, 'r') as json_values:
     values = json.load(json_values)
 
-with open("tests.json", 'r') as json_tests:
+with open(testsJson, 'r') as json_tests:
     tests = json.load(json_tests)
 
 valuesDict = {item["id"]: item["value"] for item in values["values"]}
@@ -19,5 +27,5 @@ valuesDict = {item["id"]: item["value"] for item in values["values"]}
 for i in tests["tests"]:
     UpdateValues(i)
 
-with open("reports.json", 'w') as json_reports:
+with open(reportsJson, 'w') as json_reports:
     json.dump(tests, json_reports, indent = 2)

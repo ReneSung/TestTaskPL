@@ -1,7 +1,10 @@
-print("file path:")
-filePath = input()
+import sys
 
-with open(filePath, 'r') as f:
+filePath = sys.argv
+
+data = filePath[1]
+
+with open(data, 'r') as f:
     values = f.read().splitlines()
 
 result = None

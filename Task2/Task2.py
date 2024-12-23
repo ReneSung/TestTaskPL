@@ -1,10 +1,16 @@
+import sys
 import math
 
 def Formula(dotX, dotY, circleX, circleY):
     return math.sqrt(((dotX - circleX) ** 2) + ((dotY - circleY) ** 2))
 
 
-with open('circle.txt', 'r') as f:
+values = sys.argv
+circleValues = values[1]
+dotValues = values[2]
+
+
+with open(circleValues, 'r') as f:
     circleCoordinates = f.read().splitlines()
 
 circleX = int(circleCoordinates[0].split(' ')[0])
@@ -12,7 +18,7 @@ circleY = int(circleCoordinates[0].split(' ')[1])
 
 R = int(circleCoordinates[1])
 
-with open('dots.txt', 'r') as f:
+with open(dotValues, 'r') as f:
     dots = f.read().splitlines()
 
 for i in dots:

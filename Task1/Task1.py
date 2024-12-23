@@ -1,7 +1,9 @@
-inputValues = input()
+import sys
 
-n = int(inputValues.split(' ')[0])
-m = int(inputValues.split(' ')[1])
+values = sys.argv
+
+n = int(values[1])
+m = int(values[2])
 
 list = []
 index = 0
